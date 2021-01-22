@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "953631464588",
+    "firebase_url": "https://bingeflix-b5a8d-default-rtdb.firebaseio.com",
+    "project_id": "bingeflix-b5a8d",
+    "storage_bucket": "bingeflix-b5a8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953631464588:android:b5f221c751a093412b6fa9",
+        "android_client_info": {
+          "package_name": "com.skf.bingeflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953631464588-6otfj2174bv54t72pc8m30jgr5iksv1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skf.bingeflix",
+            "certificate_hash": "b36134c7db46a4abf9e1f1e4feb08c222fd17307"
+          }
+        },
+        {
+          "client_id": "953631464588-2aiqulck7bl81sq315r7mcuoco8komuk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGMwA7Totj5dREP7eFfQ5fRi433uQU3d8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953631464588-2aiqulck7bl81sq315r7mcuoco8komuk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

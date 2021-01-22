@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:elevation="10dp"
+    android:background="@drawable/dialoglayout"
+    android:layout_height="270dp">
+
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Choose Language"
+    android:fontFamily="@font/work_sans_bold"
+    android:textColor="@color/colorBackground"
+    android:padding="10dp"
+    android:textSize="24sp"/>
+<CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:id="@+id/language_1"
+    android:padding="5dp"
+    android:textSize="18sp"
+     android:text="  English  "/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/language_2"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:onClick="onCheckboxClicked"
+        android:text="  Hindi  "/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/language_3"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:onClick="onCheckboxClicked"
+        android:text="  Others  "/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="  Done  "
+        android:onClick="onCheckboxClicked"
+        android:id="@+id/button_done"
+        android:textColor="@color/colorgrey"
+        android:layout_marginStart="200dp"
+        android:background="@drawable/custom_button"
+        
+        />
+
+</LinearLayout>
