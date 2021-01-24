@@ -63,8 +63,8 @@ public class Explore extends Fragment implements MovieItemClickListener {
     private ViewPager sliderpager;
     private TabLayout indicator;
     private TextView tv;
-    boolean e=false,h=false,o=false;
-    private RecyclerView MoviesRV,popular;
+    boolean e = false, h = false, o = false;
+    private RecyclerView MoviesRV, popular;
 
 
     private CollectionReference firebaseFirestore = FirebaseFirestore.getInstance().collection("Hosts");
@@ -100,37 +100,36 @@ public class Explore extends Fragment implements MovieItemClickListener {
         MoviesRV = view.findViewById(R.id.Rv_movies);
         popular = view.findViewById(R.id.P_movies);
         indicator = view.findViewById(R.id.indicator);
-        tv=view.findViewById(R.id.popular_tv);
+        tv = view.findViewById(R.id.popular_tv);
 
-        MovieAdapter movieAdapter = new MovieAdapter(getContext(), DataSource.getpopularMovies(),this);
+        MovieAdapter movieAdapter = new MovieAdapter(getContext(), DataSource.getpopularMovies(), this);
         MoviesRV.setAdapter(movieAdapter);
-        MoviesRV.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        MoviesRV.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        MovieAdapter popularAdapter = new MovieAdapter(getContext(), DataSource.getlanguageMovies(),this);
+        MovieAdapter popularAdapter = new MovieAdapter(getContext(), DataSource.getlanguageMovies(), this);
         popular.setAdapter(popularAdapter);
-        popular.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        popular.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user= firebaseAuth.getCurrentUser();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
         String name = user != null ? user.getDisplayName() : "User";
         String uid = Objects.requireNonNull(user).getUid();
-        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(name+" "+ uid);
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(name + " " + uid);
 
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
+                if (documentSnapshot.exists()) {
                     try {
-                        h=documentSnapshot.getBoolean("Hindi");
-                        e=documentSnapshot.getBoolean("English");
-                        o=documentSnapshot.getBoolean("Others");
-                    }catch (Exception ignored){}
+                        h = documentSnapshot.getBoolean("Hindi");
+                        e = documentSnapshot.getBoolean("English");
+                        o = documentSnapshot.getBoolean("Others");
+                    } catch (Exception ignored) {
+                    }
 
-                }
-                else
-                {
+                } else {
                     Toast.makeText(getContext(), "Document does not exist", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -138,30 +137,25 @@ public class Explore extends Fragment implements MovieItemClickListener {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-                Log.d("MainActivity",e.toString());
+                Log.d("MainActivity", e.toString());
 
             }
         });
 
-        if (e){
+        if (e) {
             tv.setText("Popular in English");
-        }
-        else if (h){
+        } else if (h) {
             tv.setText("Popular in Hindi");
-        }
-        else if (o){
+        } else if (o) {
             tv.setText("Other Popular Movies");
-        }
-        else
-        if (e && h || e && h&& o){
+        } else if (e && h || e && h && o) {
             tv.setText("Popular in Hindi And English");
-        }
-        else
+        } else
             tv.setText("Popular this week");
 
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new SliderTimer(),2000,4000);
-        indicator.setupWithViewPager(sliderpager,true);
+        timer.scheduleAtFixedRate(new SliderTimer(), 2000, 4000);
+        indicator.setupWithViewPager(sliderpager, true);
 
         searchview = view.findViewById(R.id.search_field);
         searchview.addTextChangedListener(new TextWatcher() {
@@ -190,14 +184,14 @@ public class Explore extends Fragment implements MovieItemClickListener {
 
         Intent intent = new Intent(getContext(), MovieDetailActivity.class);
         // send movie information to deatilActivity
-        intent.putExtra("title",movie.getTitle());
-        intent.putExtra("imgURL",movie.getThumbnail());
-        intent.putExtra("imgCover",movie.getCoverPhoto());
+        intent.putExtra("title", movie.getTitle());
+        intent.putExtra("imgURL", movie.getThumbnail());
+        intent.putExtra("imgCover", movie.getCoverPhoto());
         // lets crezte the animation
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),
-                movieImageView,"sharedName");
+                movieImageView, "sharedName");
 
-        startActivity(intent,options.toBundle());
+        startActivity(intent, options.toBundle());
 
 
     }
@@ -206,20 +200,19 @@ public class Explore extends Fragment implements MovieItemClickListener {
 
 
         @Override
-        public void run() {try {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (sliderpager.getCurrentItem()<lstSlides.size()-1) {
-                        sliderpager.setCurrentItem(sliderpager.getCurrentItem()+1);
+        public void run() {
+            try {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (sliderpager.getCurrentItem() < lstSlides.size() - 1) {
+                            sliderpager.setCurrentItem(sliderpager.getCurrentItem() + 1);
+                        } else
+                            sliderpager.setCurrentItem(0);
                     }
-                    else
-                        sliderpager.setCurrentItem(0);
-                }
-            });
-        }catch (Exception ignored){}
-
-
+                });
+            } catch (Exception ignored) {
+            }
 
 
         }

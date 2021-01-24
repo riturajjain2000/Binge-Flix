@@ -20,21 +20,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_fileName="splash.json" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <com.google.android.gms.common.internal.SignInButtonImpl
+        android:id="@+id/googlebutton"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bungee_inline"
-        android:text="binge watching \n\n|  REDFINED  |"
-        android:textAlignment="center"
-        android:textAllCaps="false"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/custom_button"
+        android:drawableStart="@drawable/ic_google"
+        android:padding="10sp"
+        android:drawableTint="@color/colorPrimary"
+        android:text="       Sign in        "
         android:textColor="@color/colorPrimary"
-        android:textSize="25sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
-        app:layout_constraintVertical_bias="0.363" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/tv"

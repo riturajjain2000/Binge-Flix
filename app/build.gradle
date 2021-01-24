@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -69,6 +70,11 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:6.2.1'
 
     implementation 'com.google.android.exoplayer:exoplayer:2.11.1'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 
+}
+repositories {
+    mavenCentral()
 }
